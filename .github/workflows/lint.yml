@@ -1,0 +1,40 @@
+---
+name: Lint
+
+on: [push, pull_request]
+
+jobs:
+  server:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Black"
+        uses: psf/black@stable
+        with:
+          options: "--check --verbose"
+          src: "./server"
+      - name: "Pyright"
+        uses: actions/setup-python@v4
+        with:
+          cache: 'pip'
+      - run: pip install -r server/requirements.txt
+      - uses: jakebailey/pyright-action@v2
+        with:
+          working-directory: server
+  client:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Black"
+        uses: psf/black@stable
+        with:
+          options: "--check --verbose"
+          src: "./client"
+      - name: "Pyright"
+        uses: actions/setup-python@v4
+        with:
+          cache: 'pip'
+      - run: pip install -r client/requirements.txt
+      - uses: jakebailey/pyright-action@v2
+        with:
+          working-directory: client
