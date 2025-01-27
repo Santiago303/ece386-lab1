@@ -10,12 +10,17 @@ because tensorflow doesn't support type hints appropriately.
 from tensorflow.keras.saving import load_model  # type: ignore[import]
 from PIL import Image
 from io import BytesIO
+from fastapi import FastAPI
+from keras.models import load_model
+
 
 model_path: str = "digits.keras"
 # TODO: Open saved Keras model as global variable. NO TYPE HINT REQUIRED!
-
+global model
+model = load_model("digits.keras")
 # TODO: Create FastAPI App as global variable
-
+global app 
+app = FastAPI()
 
 def image_to_np(image_bytes: bytes) -> np.ndarray:
     """Convert image to proper numpy array"""
