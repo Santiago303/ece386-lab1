@@ -13,6 +13,8 @@ from io import BytesIO
 from fastapi import FastAPI
 from keras.models import load_model
 import numpy as np
+from typing import Annotated
+from fastapi import FastAPI, File, UploadFile
 
 
 model_path: str = "digits.keras"
@@ -34,8 +36,5 @@ def image_to_np(image_bytes: bytes) -> np.ndarray:
 
 # TODO: Define predict POST function
 @app.post("/predict")
-async def predict():
-    prediction = model.predict(model)
-    predicted_class = np.argmax(prediction, axis=1)[0]  # Extract predicted class
-
-    return {"predicted_class": int(predicted_class)}
+def predict(file: Annotated[bytes, File()]):
+    return {"message": "please work"}
