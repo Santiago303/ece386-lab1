@@ -33,22 +33,11 @@ def image_to_np(image_bytes: bytes) -> np.ndarray:
 
 
 # TODO: Define predict POST function
-@app.post("/predict/")
-async def predict(file: UploadFile = File(...)):
+@app.post("/predict")
+async def predict():
     """Endpoint to receive image and predict the digit."""
-    try:
-        # Read image file as bytes
-        image_data = await file.read()
-        img_array = preprocess_image(image_data)
+    # Predict using the global model
+    prediction = model.predict(model)
+    predicted_class = np.argmax(prediction, axis=1)[0]  # Extract predicted class
 
-        # Predict using the global model
-        prediction = model.predict(img_array)
-        predicted_class = np.argmax(prediction, axis=1)[0]  # Extract predicted class
-
-        return {"predicted_class": int(predicted_class)}
-    except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    return {"predicted_class": int(predicted_class)}
