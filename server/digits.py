@@ -35,8 +35,6 @@ def image_to_np(image_bytes: bytes) -> np.ndarray:
 # TODO: Define predict POST function
 @app.post("/predict")
 async def predict():
-    """Endpoint to receive image and predict the digit."""
-    # Predict using the global model
     prediction = model.predict(model)
     predicted_class = np.argmax(prediction, axis=1)[0]  # Extract predicted class
 
