@@ -12,6 +12,7 @@ from PIL import Image
 from io import BytesIO
 from fastapi import FastAPI
 from keras.models import load_model
+import numpy as np
 
 
 model_path: str = "digits.keras"
