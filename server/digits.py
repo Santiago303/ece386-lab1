@@ -15,6 +15,7 @@ from keras.models import load_model
 import numpy as np
 from typing import Annotated
 from fastapi import FastAPI, File, UploadFile
+import pillow
 
 
 model_path: str = "digits.keras"
@@ -31,7 +32,7 @@ def image_to_np(image_bytes: bytes) -> np.ndarray:
     # First must use pillow to process bytes
     img = Image.open(BytesIO(image_bytes))
     # TODO: convert image to grayscale and resize
-    img = Image.convert("L")
+    img = Image.ImageOps.grayscale(img)
     # TODO: convert image to numpy array of shape model expects
     return np.array(img)
 
