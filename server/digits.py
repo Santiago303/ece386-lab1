@@ -33,7 +33,7 @@ def image_to_np(image_bytes: bytes) -> np.ndarray:
     img = Image.open(BytesIO(image_bytes))
     # TODO: convert image to grayscale and resize
     img = ImageOps.grayscale(img)
-    img = img.resize(28,28)
+    img = img.resize((28,28))
     # TODO: convert image to numpy array of shape model expects
     return np.array(img)
 
