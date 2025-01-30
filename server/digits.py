@@ -44,4 +44,5 @@ def image_to_np(image_bytes: bytes) -> np.ndarray:
 def predict(file: Annotated[bytes, File()]):
     processed_image = image_to_np(file)
     expanded_array = tf.expand_dims(processed_image, axis=0)
-    return {"file_size": model.predict(expanded_array)}
+    prediction = model.predict(expanded_array).argmax()
+    return {"file_size": prediction}
