@@ -12,7 +12,7 @@ def get_img_prediction(
 ) -> str:
 
     url = f"https://0.0.0.0:8000/predict"
-    myFiles = {open("img/10.png", "r")}
+    myFiles = {open("img/10.png", "rb")}
     x = requests.post(url, files=myFiles)
     print(x.text)
     """Send image to server for prediction."""
