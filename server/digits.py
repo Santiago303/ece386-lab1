@@ -16,6 +16,7 @@ from keras.models import load_model
 import numpy as np
 from typing import Annotated
 from fastapi import FastAPI, File, UploadFile
+import tensorflow as tf
 
 
 model_path: str = "digits.keras"
@@ -42,4 +43,5 @@ def image_to_np(image_bytes: bytes) -> np.ndarray:
 @app.post("/predict")
 def predict(file: Annotated[bytes, File()]):
     processed_image = image_to_np(file)
-    return {"file_size": model.predict(processed_image)}
+    expanded_array = tf.expand_dims(array, axis=0)
+    return {"file_size": model.predict(expanded_array)}
