@@ -11,13 +11,11 @@ def get_img_prediction(
     server_ip: str, server_port: int, api_path: str, image_path: str
 ) -> str:
 
-    url = f"https://0.0.0.0:8000/predict"
-    myFiles = {open("img/10.png", "rb")}
-    x = requests.post(url, files=myFiles)
-    print(x.text)
-    """Send image to server for prediction."""
-    # TODO: Replace with code to send image to server
-    return x.text
+    url = f"http://{server_ip}:{server_port}/{api_path}"
+    with image_path.open('rb') as img_file:
+        files = {'file': (image_path.name, img_file, 'image/png')}  # Assuming PNG, change MIME type as needed
+        response = requests.post(url, files=files)
+    return response.text
 
 
 def main(server_ip: str, server_port: int) -> None:
