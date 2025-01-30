@@ -11,7 +11,7 @@ def get_img_prediction(
     server_ip: str, server_port: int, api_path: str, image_path: str
 ) -> str:
 
-    image_path = Path(image_path_str)
+    image_path = Path(image_path)
     url = f"http://{server_ip}:{server_port}/{api_path}"
     with image_path.open('rb') as img_file:
         files = {'file': (image_path.name, img_file, 'image/png')}  # Assuming PNG, change MIME type as needed
