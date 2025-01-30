@@ -45,4 +45,4 @@ def predict(file: Annotated[bytes, File()]):
     processed_image = image_to_np(file)
     expanded_array = tf.expand_dims(processed_image, axis=0)
     prediction = model.predict(expanded_array).argmax()
-    return {"file_size": prediction}
+    return {"Prediction": prediction}
