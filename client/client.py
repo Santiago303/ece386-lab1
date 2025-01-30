@@ -8,7 +8,7 @@ import sys
 def get_img_prediction(
     server_ip: str, server_port: int, api_path: str, image_path: str
 ) -> str:
-    url = https://0.0.0.0:8000/predict
+    url = "https://0.0.0.0:8000/predict"
     myFiles = {open("/img/10.png","r")}
     x = requests.post(url, json = myFiles)
     print(x.text)

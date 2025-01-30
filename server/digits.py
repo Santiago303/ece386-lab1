@@ -22,19 +22,22 @@ model_path: str = "digits.keras"
 global model
 model = load_model("digits.keras")
 # TODO: Create FastAPI App as global variable
-global app 
+global app
 app = FastAPI()
+
 
 def image_to_np(image_bytes: bytes) -> np.ndarray:
     """Convert image to proper numpy array"""
     # First must use pillow to process bytes
     img = Image.open(BytesIO(image_bytes))
     # TODO: convert image to grayscale and resize
+    img = Image.convert("L")
     # TODO: convert image to numpy array of shape model expects
-    return None
+    return np.array(img)
 
 
 # TODO: Define predict POST function
 @app.post("/predict")
 def predict(file: Annotated[bytes, File()]):
-    return {"message": "please work"}
+    processed_image = image_to_np(file)
+    return {"file_size": len(file)}
