@@ -1,2 +1,2 @@
 pillow
-tensor-cpu
+tensorflow
