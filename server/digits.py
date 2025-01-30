@@ -42,4 +42,4 @@ def image_to_np(image_bytes: bytes) -> np.ndarray:
 @app.post("/predict")
 def predict(file: Annotated[bytes, File()]):
     processed_image = image_to_np(file)
-    return {"file_size": len(file)}
+    return {"file_size": model.predict(processed_image)}
