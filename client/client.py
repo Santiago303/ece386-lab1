@@ -11,9 +11,9 @@ def get_img_prediction(
     server_ip: str, server_port: int, api_path: str, image_path: str
 ) -> str:
 
-    url = "https://0.0.0.0:8000/predict"
+    url = f"https://0.0.0.0:8000/predict"
     myFiles = {open("img/10.png", "r")}
-    x = requests.post(url, json=myFiles)
+    x = requests.post(url, files=myFiles)
     print(x.text)
     """Send image to server for prediction."""
     # TODO: Replace with code to send image to server
@@ -25,15 +25,17 @@ def main(server_ip: str, server_port: int) -> None:
     and send it to the server for prediction.
     Then display the result to the user.
     """
-    server_ip = "127.0.0.1"
-    server_port = 8000
-    # TODO: Replace with prompt to user and call to get_img_prediction
-    get_img_prediction(
-        "127.0.0.1",
-        8000,
-        "https://0.0.0.0:8000/predict",
-        Path("img/10.png"),
-    )
+    while True:
+        image_path = input("Enter the path to the image or 'exit' to quit: ")
+        if image_path.lower() == 'exit':
+            break
+        if not Path(image_path).is_file():
+            print("File does not exist, please try again.")
+            continue
+        
+        response = get_img_prediction(server_ip, server_port, "predict", Path(image_path))
+        print("Prediction from server:", response)
+
     print(f"Using server {server_ip}:{server_port}")
 
 
