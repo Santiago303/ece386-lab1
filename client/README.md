@@ -6,8 +6,15 @@ The client prompts the user for a path to an image. After hitting “enter” th
 
 *Replace this line with some steps of how to setup and run the client*
 1. Create and activate a virtual environment.
+   
 2. Install dependencies
-pip install -r requirements.txt
-4. Run the client. (Replace <server_ip> with the server's IP address and <port> with the appropriate port number) 
-python client.py <server_ip> <port>
+```console
+usr@ece:~$ pip install -r requirements.txt
+```
+3. Run the client. (Replace <server_ip> with the server's IP address and <port> with the appropriate port number)
+```console
+usr@ece:~$ python client.py <server_ip> <port>
+```
+
+
 
