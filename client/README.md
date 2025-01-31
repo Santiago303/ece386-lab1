@@ -4,7 +4,6 @@ The client prompts the user for a path to an image. After hitting “enter” th
 
 ## Usage
 
-*Replace this line with some steps of how to setup and run the client*
 1. Create and activate a virtual environment.
    
 2. Install dependencies
