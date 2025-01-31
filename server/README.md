@@ -4,7 +4,6 @@ The server opens up the previously saved keras model. It accepts a POST request 
 
 ## Usage
 
-*Replace this line with some steps of how to setup and run the server*
 1. Create and activate a virtual enviorment.
 
 2. Install server packages
