@@ -12,7 +12,6 @@ from PIL import Image
 from PIL import ImageOps
 from io import BytesIO
 from fastapi import FastAPI
-from keras.models import load_model
 import numpy as np
 from typing import Annotated
 from fastapi import FastAPI, File, UploadFile
