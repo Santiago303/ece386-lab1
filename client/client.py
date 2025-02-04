@@ -22,17 +22,21 @@ def get_img_prediction(
 
 
 def main(server_ip: str, server_port: int) -> None:
+    """Repeatedly prompt the user for a path to an image
+    and send it to the server for prediction.
+    Then display the result to the user.
+    """
     while True:
-        image_path_str = input("Enter the path to the image or 'exit' to quit: ")
-        if image_path_str.lower() == "exit":
+        image_path = input("Enter the path to the image or 'exit' to quit: ")
+        if image_path.lower() == "exit":
             break
-        
-        image_path = Path(image_path_str)
-        if not image_path.is_file():
+        if not Path(image_path).is_file():
             print("File does not exist, please try again.")
             continue
 
-        response = get_img_prediction(server_ip, server_port, "predict", image_path)
+        response = get_img_prediction(
+            server_ip, server_port, "predict", Path(image_path)
+        )
         print("Prediction from server:", response)
 
     print(f"Using server {server_ip}:{server_port}")
