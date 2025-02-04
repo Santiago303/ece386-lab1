@@ -35,7 +35,7 @@ def main(server_ip: str, server_port: int) -> None:
         response = get_img_prediction(server_ip, server_port, "predict", image_path)
         print("Prediction from server:", response)
 
-    print(f"Using server {server_ip}:{server_port}")print(f"Using server {server_ip}:{server_port}")
+    print(f"Using server {server_ip}:{server_port}")
 
 
 if __name__ == "__main__":
