@@ -23,4 +23,4 @@ We first decided to grayscale the image so that it doesn’t get in the way of r
 It depends, assuming we are getting multiple clients/users then it makes sense to have the server with the model to simplify the client side. On the other hand, if it was just for a single user and a time or just a local program it would not need a server it would just be overkill.   
 ## Documentation
 
-*Documentation statement. Pay special attention to the LLM policy.*
+*Documentation statement. We used Capt Yarbrough's video to structure our server code. C1C Quinn Flachman then told us how to set up our server with the post function to receive the POST request. He also showed us how to send files he directed us to the fast API documentation. He also helped us debug various errors.  
